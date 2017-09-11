@@ -30,12 +30,36 @@ This lab requires:
 
 * [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
 
-The following resources are directly from :
+The following resources are directly from Udacity Repo:
 * drive.py
 * video.py
 * writeup_template.md
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
+
+##Model Architecture and Training Strategy
+
+###1. Solution Design Approach
+
+Firstly, I followd the instruction of the class to use a simple one-layer conv2D, just for trying the workflow or the pipeline to actually train a network and sucessfully be saved. The result was pretty bad as expected. The network seemed not working at all.  But at least, it proved the pipeline was complete.
+
+Then I switched to LeNet-5, since it works fine for the last project. But it was sort of slow to train and the reslut was not that good as expected. The car drove out of the track before the bridge.
+
+Then I extended the dataset by using multi-cameras, but made a mistake that -correction to left image as I thought the left turnning angles are negtive.
+
+Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
+
+####2. Final Model Architecture
+
+The final model architecture consisted of 6 conv2d layers, followed by 5 fully-connected network.
+
+####3. Creation of the Training Set & Training Process
+
+To capture good driving behavior, I first recorded two laps on track one using center lane driving at a slow speed to make sure it stays at the center.
+
+Then I repeated this process on the opposite direction in order to get more data points.
+
+To augment the data sat, I also flipped images and angles thinking that this would help the car to stay in the center. 
 
 ## Details About Files In This Directory
 
@@ -44,7 +68,7 @@ Network: nvidia architecture
 Dataset: images from left, right and center cameras + Flipped image and negative steering angles.
 Number of epochs: 3
 
-### model_nvi_ep1.h5
+### model_nvi_e1.h5
 Saved model trained with 1 epoch since the dataset is quite big and it takes 5000s to finish one epoch, even using 2 GPUs
 
 
