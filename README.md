@@ -26,9 +26,6 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 ### Dependencies
-This lab requires:
-
-* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
 
 The following resources are directly from Udacity Repo:
 * drive.py
@@ -48,12 +45,18 @@ Then I switched to LeNet-5, since it works fine for the last project. But it was
 Then I extended the dataset by using multi-cameras, but made a mistake that -correction to left image as I thought the left turnning angles are negtive.
 
 Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
+#### Reduce overfitting
+3 dropout layers following fully connected network are used to reduce overfitting. Dropout rate = 0.5
+#### Parameter tuning
+Dropout rate: 1 -> 0.5
+Learning rate: Adam is used for getting an adaptive learning rate
+Epoch: with increasing the number of epochs, the result is getting better from 1 epoch to 3 epochs
 
-#### 2. Final Model Architecture
+### 2. Final Model Architecture
 
 The final model architecture consisted of 6 conv2d layers, followed by 5 fully-connected network.
 
-#### 3. Creation of the Training Set & Training Process
+### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving at a slow speed to make sure it stays at the center.
 
@@ -69,8 +72,16 @@ Dataset: images from left, right and center cameras + Flipped image and negative
 Number of epochs: 3
 
 ### model_nvi_e1.h5
-Saved model trained with 1 epoch since the dataset is quite big and it takes 5000s to finish one epoch, even using 2 GPUs
+Model was trained with 1 epoch since the dataset is quite big and it takes 5000s to finish one epoch, even using 2 GPUs
 
+### model_nvi_e3.h5
+Model was trained with 3 epochs
+
+### run1.mp4
+The video is recorded with using model_nvi_e1.h5. We can clearly see the car was stock on the bridge. So with more epochs involved, the result is getting better.
+
+### epoch3.mp4
+The video is recorded with using 3 epochs on same architecture. It managed to cross the bridge. But it drove out the track afterwards. We will see if 5 epochs help to get a better result.
 
 
 
