@@ -37,9 +37,9 @@ The following resources are directly from Udacity Repo:
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
 
-##Model Architecture and Training Strategy
+## Model Architecture and Training Strategy
 
-###1. Solution Design Approach
+### 1. Solution Design Approach
 
 Firstly, I followd the instruction of the class to use a simple one-layer conv2D, just for trying the workflow or the pipeline to actually train a network and sucessfully be saved. The result was pretty bad as expected. The network seemed not working at all.  But at least, it proved the pipeline was complete.
 
@@ -49,11 +49,11 @@ Then I extended the dataset by using multi-cameras, but made a mistake that -cor
 
 Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture consisted of 6 conv2d layers, followed by 5 fully-connected network.
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving at a slow speed to make sure it stays at the center.
 
