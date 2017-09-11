@@ -44,7 +44,8 @@ Network: nvidia architecture
 Dataset: images from left, right and center cameras + Flipped image and negative steering angles.
 Number of epochs: 3
 
-### model_nvi_ep1.h5: saved model trained with 1 epoch since the dataset is quite big and it takes 5000s to finish one epoch, even using 2 GPUs
+### model_nvi_ep1.h5
+Saved model trained with 1 epoch since the dataset is quite big and it takes 5000s to finish one epoch, even using 2 GPUs
 
 
 
