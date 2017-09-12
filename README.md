@@ -17,6 +17,20 @@ To avoid the fusion, I did not include recovery part, like how to pull back the 
 
 So it takes a lot of time to train the network for a given big amount of dataset.
 
+Here is the output of ETA for training 5 epochs:
+
+Epoch 1/5
+11188/11188 [==============================] - 9192s - loss: 0.0026 - val_loss: 0.0048
+Epoch 2/5
+11188/11188 [==============================] - 5607s - loss: 4.3319e-04 - val_loss: 0.0044
+Epoch 3/5
+11188/11188 [==============================] - 5809s - loss: 2.5735e-04 - val_loss: 0.0045
+Epoch 4/5
+11188/11188 [==============================] - 5851s - loss: 2.0501e-04 - val_loss: 0.0042
+Epoch 5/5
+11188/11188 [==============================] - 5922s - loss: 1.6737e-04 - val_loss: 0.0042
+
+
 The Project
 ---
 The goals / steps of this project are the following:
