@@ -66,7 +66,7 @@ Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
 
 Here is a visualization of the architecture.
 
-->![Nvidia Architecture](model.png)<-
+-> ![Nvidia Architecture](model.png) <-
 #### Reduce overfitting
 3 dropout layers following fully connected network are used to reduce overfitting. Dropout rate = 0.5
 #### Parameter tuning
