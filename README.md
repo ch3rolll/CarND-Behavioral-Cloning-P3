@@ -108,7 +108,7 @@ Model was trained with 3 epochs
 ### model_nvi_e5.h5
 Model was trained with 5 epochs
 
-### run1.mp4
+### epoch1.mp4
 The video is recorded with using model_nvi_e1.h5. We can clearly see the car was stock on the bridge. So with more epochs involved, the result is getting better.
 
 ### epoch3.mp4
