@@ -77,11 +77,14 @@ Model was trained with 1 epoch since the dataset is quite big and it takes 5000s
 ### model_nvi_e3.h5
 Model was trained with 3 epochs
 
+### model_nvi_e5.h5
+Model was trained with 5 epochs
+
 ### run1.mp4
 The video is recorded with using model_nvi_e1.h5. We can clearly see the car was stock on the bridge. So with more epochs involved, the result is getting better.
 
 ### epoch3.mp4
 The video is recorded with using 3 epochs on same architecture. It managed to cross the bridge. But it drove out the track afterwards. We will see if 5 epochs help to get a better result.
 
-
-
+### epoch5.mp4
+The video is recorded with using 5 epochs but same architecture. It managed to stay on track for the whole track 1.
