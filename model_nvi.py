@@ -9,13 +9,10 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential, Model
 from keras.regularizers import l2
 from keras.layers import Flatten, Dense, Activation, Lambda, Conv2D, pooling, Cropping2D, Dropout
-
-# Set GPU environment
+from keras.utils import plot_model
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
-
-# Data preparing
 
 samples = []
 with open('driving_log.csv') as csvfile:
@@ -27,10 +24,8 @@ with open('driving_log.csv') as csvfile:
 train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 
 correction =0.2
-dropout = 0.5
+dropout = 1.
 
-
-# Just train images from center camera
 
 def generator(samples, batch_size=32):
     num_samples = len(samples)
@@ -58,7 +53,16 @@ def generator(samples, batch_size=32):
             yield sklearn.utils.shuffle(X_train, y_train)
 
 
-# Generate data from all cameras
+# ch, row, col = 3, 80, 320  # Trimmed image format
+
+# model = Sequential()
+# # Preprocess incoming data, centered around zero with small standard deviation 
+# model.add(Cropping2D(cropping=((50,30), (0,0)), input_shape=(160,320,3)))
+
+# # Normalize
+# model.add(Lambda(lambda x: x/127.5 - 1.,
+#         input_shape=(row, col, ch),
+#         output_shape=(row, col, ch)))
 
 def generator_all(samples, batch_size=32):
     num_samples = len(samples)
@@ -106,14 +110,15 @@ def generator_all(samples, batch_size=32):
 train_generator = generator_all(train_samples, batch_size=32)
 validation_generator = generator_all(validation_samples, batch_size=32)
 
+# normalization
 
-# Model build-up. Using Nvidia Arch.
 model = Sequential()
 
-# normalization
 model.add(Lambda(lambda x: x / 127.5 - 1., input_shape=(160,320,3)))
 model.add(Cropping2D(cropping=((65, 25), (0, 0))))
 
+# Allow the model to choose the appropriate color space
+# https://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9
 model.add(Conv2D(3, kernel_size=(1, 1), strides=(1, 1), activation='linear'))
 
 model.add(Conv2D(24, kernel_size=(5, 5), strides=(2, 2), activation='relu'))
@@ -131,13 +136,13 @@ model.add(Dropout(dropout))
 model.add(Dense(50, activation='relu'))
 model.add(Dropout(dropout))
 model.add(Dense(10, activation='relu'))
+
 model.add(Dense(1, activation='linear'))
     
+
+plot_model(model,to_file='model.png',show_shapes=True)
+
 model.compile(loss='mse', optimizer='adam')
-
-
-# Using 1 epoch to try the model out, using 3 epochs to get a better result
-
-model.fit_generator(train_generator, steps_per_epoch= len(train_samples), validation_data=validation_generator, validation_steps=len(validation_samples), epochs=3)
+model.fit_generator(train_generator, steps_per_epoch= len(train_samples), validation_data=validation_generator, validation_steps=len(validation_samples), epochs=5)
 
 model.save('model_nvi_e3.h5')
