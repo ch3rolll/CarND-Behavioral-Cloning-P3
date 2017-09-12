@@ -63,6 +63,10 @@ Then I switched to LeNet-5, since it works fine for the last project. But it was
 Then I extended the dataset by using multi-cameras, but made a mistake that -correction to left image as I thought the left turnning angles are negtive.
 
 Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
+
+Here is a visualization of the architecture.
+
+![Nvidia Architecture](model.png)
 #### Reduce overfitting
 3 dropout layers following fully connected network are used to reduce overfitting. Dropout rate = 0.5
 #### Parameter tuning
