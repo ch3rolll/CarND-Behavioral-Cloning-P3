@@ -64,7 +64,7 @@ Then I extended the dataset by using multi-cameras, but made a mistake that -cor
 
 Afterwards, I switched to Nvidia Self-driving car arch. It got a good result.
 
-Here is a visualization of the architecture.
+Here is a visualization of the architecture (using keras.util.plot_model function).
 
 <p align="center">
   <img width="481" height="1955" src="model.png">
